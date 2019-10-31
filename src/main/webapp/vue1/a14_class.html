@@ -1,0 +1,26 @@
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    .item { padding: 10 }
+    .active { color: red }
+  </style>
+</head>
+<body>
+  <!-- https://jsfiddle.net/ -->
+  <div id="app">
+    <div class="item" v-bind:class="{ active: index == 0 }">zero</div>
+    <div class="item" v-bind:class="{ active: index == 1 }">one</div>
+    <div class="item" v-bind:class="{ active: index == 2 }">two</div>
+    <input type="text" v-model="index" />
+    <hr />
+    <div v-bind:class="classes">active item</div>
+  </div>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: { index: 0, classes: ['active', 'item'] }
+    })    
+   </script>
+</body>    
+</html>

@@ -1,0 +1,32 @@
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <!-- https://jsfiddle.net/ -->
+  <div id="app">
+    <input type="text" v-on:keyup.enter="alert('enter')" 
+                    v-on:keyup.down="alert('down')" 
+                    v-on:keyup.left="alert('left')" 
+                    v-on:keyup.right="alert('right')" 
+                    v-on:keyup.f1="alert('f1')" 
+                    v-on:keyup.esc="alert('esc')" 
+                    v-on:keyup.up="alert('up')" />
+
+    <input type="text" v-on:keyup.up="onKeyUp" />
+
+    <button type="button" v-on:click.ctrl="alert('ctrl+click')">ctrl+click</button>
+    <button type="button" v-on:click.right="alert('right click')">right click</button>
+  </div>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: { },
+      methods: {
+        alert: function(message) { alert(message); },
+        onKeyUp: function(e) { alert(e.key) }
+      }
+    })    
+   </script>
+</body>    
+</html>

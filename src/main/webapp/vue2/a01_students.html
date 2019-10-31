@@ -1,0 +1,31 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+  <div id="app">
+    <table>
+      <tr v-for="student in students">
+        <td>{{ student.id }}</td> 
+        <td>{{ student.name }}</td>
+        <td>{{ student.studentNo }}</td>
+        <td>{{ student.department.name }}</td>
+      </tr>
+    </table>
+  </div>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: { students: [] },
+      mounted () {
+        axios
+          .get('/students')
+          .then(response => (this.students = response.data))
+      }
+    })    
+   </script>
+</body>    
+</html>

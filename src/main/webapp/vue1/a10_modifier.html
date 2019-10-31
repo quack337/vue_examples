@@ -1,0 +1,25 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <!-- https://jsfiddle.net/ -->
+  <div id="app">
+    <!-- .prevent는 modifier임. preventDefault -->
+      <form v-on:submit.prevent="onSubmit">
+        <input type="text"/>
+        <button type="submit">submit</button>
+      </form>
+  </div>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: { },
+      methods: {
+        onSubmit: function() { alert("do nothing"); }
+      }
+    })    
+   </script>
+</body>    
+</html>

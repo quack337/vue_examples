@@ -1,0 +1,29 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+  <div id="app">
+    <div v-for="(value, key) in person">
+      {{ key }} {{ value }} 
+    </div>
+    <button type="button" @click="change1">change1 속성값만 변경</button>
+    <button type="button" @click="change2">change2 속성값만 변경</button>
+    <button type="button" @click="change3">change3 새 속성 추가</button>
+    <button type="button" @click="change4">change4 새 속성 추가</button>
+  </div>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: { person: { id:1, name:'홍길동', age: 18 } },
+      methods: {
+        change1: function() { this.person.age++; }, // 감지됨
+        change2: function() { Vue.set(this.person, "age", this.person.age + 1); }, // 감지됨
+        change3: function() { this.person.sex = '남자'; }, // 감지됨
+        change4: function() { Vue.set(this.person, "sex", '여자'); } // 감지됨. 이것 먼저 호출한 경우에만...
+      }
+    })    
+   </script>
+</body>    
+</html>

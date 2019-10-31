@@ -1,0 +1,24 @@
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <!-- https://jsfiddle.net/ -->
+  <div id="app">
+    <input type="text" v-model="width" />
+    <input type="text" v-model="height" />
+    {{ area }}  {{ getArea() }} <!-- 둘 다 실시간 변경됨. -->
+  </div>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: { width: 100, height: 50 },
+      methods: { getArea: function() { return this.width * this.height; } },
+      // vue는 area가 width, height에 의존하는지 안다고 함. 파싱하나?
+      // computed properties는 리턴 값이 cache 된다고 함. 
+      // 그러니, method 보다는 computed property가 성능이 좋겠군!
+      computed: { area: function() { return this.width * this.height; } }
+    })    
+   </script>
+</body>    
+</html>

@@ -1,0 +1,37 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <!-- https://jsfiddle.net/ -->
+  <div id="app">
+    <!-- DOM이 가급적 재사용되기 때문에, 입력된 값이 유지된다. -->
+    <template v-if="index === 1">
+      <label>Username</label>
+      <input placeholder="Enter your username">
+    </template>
+    <template v-else>
+      <label>Email</label>
+      <input placeholder="Enter your email address">
+    </template>
+    <button type="button" onclick="app.index *= -1">change</button>
+    <hr />
+    <!-- key를 다르게 주면 DOM이 재사용되지 않는다. key가 같으면 재사용되겠지.. -->
+    <template v-if="index === 1">
+      <label>Username</label>
+      <input placeholder="Enter your username" key="1">
+    </template>
+    <template v-else>
+      <label>Email</label>
+      <input placeholder="Enter your email address" key="2">
+    </template>
+  </div>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: { index: 1 }
+    })    
+   </script>
+</body>    
+</html>

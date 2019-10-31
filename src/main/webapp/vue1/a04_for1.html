@@ -1,0 +1,33 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+  <div id="app">
+    <div v-for="(p, index) in list">
+      ({{index}}) {{ p.id }}, {{ p.name }}
+    </div>
+    <hr />
+    <div v-for="person in list">
+      <div v-for="(value, key) in person">
+        {{ key }} {{ value }}
+      </div>
+    </div>
+    <hr />
+    <div v-for="person in list">
+      <div v-for="(value, key, index) in person">
+        ({{index}}) {{ key }} {{ value }}
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        list: [{ id:1, name:'홍길동'},{ id:2, name:'임꺽정'} ]
+      }
+    })    
+   </script>
+</body>    
+</html>

@@ -1,0 +1,30 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<!--
+development version, includes helpful console warnings 
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+production version, optimized for size and speed 
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+-->
+
+</head>
+<body>
+  <!-- 실습 https://jsfiddle.net/ -->
+
+  <div id="app">
+     {{ message }}
+  </div>
+  
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: '안녕하세요.'
+      }
+    })    
+   </script>
+</body>    
+</html>

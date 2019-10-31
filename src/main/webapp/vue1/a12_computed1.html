@@ -1,0 +1,35 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <!-- https://jsfiddle.net/ -->
+  <div id="app">
+    <div>{{ now1 }}</div> 
+    <div>{{ now2 }}</div>
+    <div>{{ now3 }}</div>
+    <div>{{ getNow() }}</div>
+    <!-- message가 변경될 때, 갱신되는 것은? -->
+    <hr />    
+    <input type="text" v-model="message" /> {{ message }}
+    <hr />
+    <input type="text" v-model="person.name" /> {{ person.name }}
+  </div>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: { message:"hello", person: { age:13, name:'홍길동' } },
+      methods: { getNow: function() { return new Date().toLocaleTimeString(); } },
+      // computed properties는 리턴 값이 cache 된다고 함. 
+      // data에 정의된 값이 변경되면, computed properties 값도 갱신되게 하려면...
+      // 
+      computed: { 
+        now1: function() { return new Date().toLocaleTimeString(); }, 
+        now2: function() { return this.message + ' ' + (new Date().toLocaleTimeString()); },
+        now3: function() { return this.person.name + ' ' + (new Date().toLocaleTimeString()); }
+      }
+    })    
+   </script>
+</body>    
+</html>

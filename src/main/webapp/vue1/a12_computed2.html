@@ -1,0 +1,35 @@
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <!-- https://jsfiddle.net/ -->
+  <div id="app">
+    left: <input type="text" v-model="left" /> <br />
+    top: <input type="text" v-model="top" /> <br />
+    right: <input type="text" v-model="right" /> <br />
+    bottom: <input type="text" v-model="bottom" /> <br />
+    <hr />
+    width: <input type="text" v-model="width" /> <br /> <!-- computde 속성도 직접 수정 할 수 잇다 -->
+    height: <input type="text" v-model="height" /> <br />
+    area: {{ area }}
+  </div>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: { left:0, top:0, right:100, bottom:100 },
+      computed: {
+        width: {
+          get: function() { return this.right - this.left; },
+          set: function(value) { this.right = parseInt(this.left) + (parseInt(value) || 0); } // 문자열 연산을 막기 위해 parseInt          
+        },
+        height: {
+          get: function() { return this.bottom - this.top; },
+          set: function(value) { this.bottom = parseInt(this.top) + (parseInt(value) || 0); }
+        },
+        area: function() { return this.width * this.height; }
+      }
+    })    
+   </script>
+</body>    
+</html>

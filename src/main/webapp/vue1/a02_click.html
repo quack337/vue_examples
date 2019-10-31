@@ -1,0 +1,41 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <!-- https://jsfiddle.net/ -->
+  <div id="app">
+    <span>{{ message }}</span>
+    <hr />
+    <input type="text" v-bind:value="message" /> <!-- v-bind는 단방향 -->
+    <textarea>{{ message }}</textarea>
+    <hr />
+    
+    <input type="text" v-model="message" /> <!-- v-model은 양방향 -->
+    <textarea v-model="message"></textarea>
+    <hr />
+    
+    <button type="button" onclick="app.message = 'AAAAAAAA'">click</button>
+    <button type="button" onclick="app.method1()">click</button>
+    <button type="button" v-on:click="message = 'BBBBBBBB'">click</button>
+    <button type="button" v-on:click="method1()">click</button>
+    <button type="button" v-on:click="method1">click</button>
+    <!-- click은 v-on의 argument -->
+  </div>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue! '
+      },
+      methods: {
+        method1: function() {
+          this.message = 'CCCCCCCC'; // OK
+          app.message = 'DDDDDDDD'; // OK
+        }
+      }
+    })    
+   </script>
+</body>    
+</html>

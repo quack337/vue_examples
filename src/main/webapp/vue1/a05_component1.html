@@ -1,0 +1,25 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <!-- https://jsfiddle.net/ -->
+  <div id="app">
+    <todo-item v-bind:value="item"></todo-item>
+  </div>
+
+  <script type="text/javascript">
+    Vue.component('todo-item', {
+      props: ['value'],
+      template: '<span>{{ value.id }}: {{ value.text }}</span>'
+    })
+    var app7 = new Vue({
+      el: '#app',
+      data: {
+        item: { id:1, text: '쇼핑' },
+      }
+    })
+   </script>
+</body>    
+</html>

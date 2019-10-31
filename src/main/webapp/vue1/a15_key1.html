@@ -1,0 +1,44 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+  <div id="app">
+    <div v-for="p in list">
+      {{ p.id }} {{ p.name }}
+      <input type="text" /> <!-- 입력 중인 값이 person 객체를 따라가지 못한다. -->
+    </div>
+    <hr />
+
+    <div v-for="p in list" :key="p.id"> <!-- div 객체가 person 객체를 따라간다. -->
+      {{ p.id }} {{ p.name }}
+      <input type="text" />
+    </div>
+    <hr />
+
+    <input type="text" v-model="name" />
+    <button type="button" v-on:click="add">add</button>
+    <button type="button" v-on:click="reverse">reverse</button>
+  </div>      
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        name: '',
+        list: [{ id:1, name:'홍길동'},{ id:2, name:'임꺽정'} ],
+      },
+      methods: {
+        add: function() {
+          var id = this.list[0].id;
+          var p = { id: id - 1, name: this.name };
+          this.list.unshift(p);
+        },
+        reverse: function() {
+          this.list = this.list.reverse();
+        }
+      }
+    })    
+   </script>
+</body>    
+</html>

@@ -1,0 +1,20 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <!-- https://jsfiddle.net/ -->
+  <div id="app">
+    <a :href="url">바로가기</a> <!-- v-bind:href 줄임 -->
+    <button type="button" @click="onClick">button</button> <!-- v-on:click 줄임 -->
+  </div>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: { url: "https://www.naver.com" },
+      methods: { onClick: function() { alert(1); }}
+    })    
+   </script>
+</body>    
+</html>

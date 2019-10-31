@@ -1,0 +1,29 @@
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    .item { padding: 10 }
+    .active { color: red }
+  </style>
+</head>
+<body>
+  <!-- https://jsfiddle.net/ -->
+  <div id="app">
+      <todo-item class="item" v-bind:class="{ active: index == 0 }">zero</todo-item>
+      <todo-item class="item" v-bind:class="{ active: index == 1 }">one</todo-item>
+      <todo-item class="item" v-bind:class="{ active: index == 2 }">two</todo-item>
+      <input type="text" v-model="index" />
+      <hr />
+      <div v-bind:style="{ color: color, fontSize: size + 'px' }">inline style</div>
+    </div>
+  <script type="text/javascript">
+    Vue.component('todo-item', {
+      template: '<div>This is a todo</div>'
+    });  
+    var app = new Vue({
+      el: '#app',
+      data: { index: 0, color: "blue", size:20  }
+    })    
+   </script>
+</body>    
+</html>

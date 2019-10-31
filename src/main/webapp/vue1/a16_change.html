@@ -1,0 +1,38 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <!-- https://jsfiddle.net/ -->
+  <div id="app">
+    <div v-for="p in list">{{ p.id }} {{ p.name }}</div>
+    <hr />
+
+    <button type="button" @click="change1">this.list[0].id++</button>
+    <button type="button" @click="change2">this.list[0].id = 33</button>
+    <button type="button" @click="change3">this.list[0].name = '연흥부'</button>
+    <button type="button" @click="change4">this.list[1] = {id: 33, name: "전우치"}</button>     <br />
+    <button type="button" @click="change5">this.list[1] = this.list[0]</button>
+    <button type="button" @click="change6">list.length 변경</button>
+    <button type="button" @click="change7">list.push(...)</button> <br />
+    <button type="button" @click="change8">this.list.splice(index, 1, {id: 33, name: "전우치"})</button>
+  </div>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: { list: [{ id:1, name:'홍길동'},{ id:2, name:'임꺽정'} ] },
+      methods: {
+        change1: function() { this.list[0].id++; }, // 변경 감지됨
+        change2: function() { this.list[0].id = 33; }, // 변경 감지됨
+        change3: function() { this.list[0].name = '연흥부'; }, // 변경 감지됨
+        change4: function() { this.list[1] = {id: 33, name: "전우치"}; }, // 변경 감지 안 됨
+        change5: function() { this.list[1] = this.list[0]; }, // 변경 감지 안 됨, 이후로 변경이 동기화됨
+        change6: function() { let index = this.list.length; this.list.length = index + 1; this.list[index] = {id:0, name:"noname"}; }, // 변경 감지 안됨.
+        change7: function() { let index = this.list.length; this.list.push({id:0, name:"noname"}); }, // 변경 감지됨
+        change8: function() { this.list.splice(1, 1, {id: 33, name: "전우치"}); }, // 변경 감지됨
+      }
+    })    
+   </script>
+</body>    
+</html>

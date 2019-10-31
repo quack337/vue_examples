@@ -1,0 +1,22 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+  <div id="app">
+    <span v-if="show">toogle</span>
+    <button type="button" onclick="app.show = !app.show">click</button>    
+  </div>
+  <script type="text/javascript">
+    var d = { show: true };
+    Object.freeze(d);  // read-only 객체가 됨
+    var app = new Vue({
+      el: '#app',
+      data: d
+    })
+    // app 객체의 property
+    alert(app.$data == d && app.$el == document.getElementById("app"));
+   </script>
+</body>    
+</html>
