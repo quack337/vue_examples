@@ -48,8 +48,9 @@
     <li><a href="/vue1/a16_change.html">a16_change.html</a></li>
     <li><a href="/vue1/a16_change1.html">a16_change1.html</a></li>
     <li><a href="/vue1/a17_form.html">a17_form.html</a></li>
-    <hr />
+    
     <li><a href="/vue2/a01_students.html">a01_students.html</a></li>
+    <li><a href="/vue2/a02_sandam1.html">a02_sandam1.html</a></li>
     
   </ul>
 </div>

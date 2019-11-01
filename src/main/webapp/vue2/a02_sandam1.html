@@ -1,0 +1,66 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+  <div id="app">
+    <table>
+      <thead>
+        <tr>
+          <td></td>
+          <td v-for="date in dates">{{ date.format("MM-DD") }} {{ DOW[date.day()] }}</td> 
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="time in times">
+          <Td>{{ time }}</Td>
+          <td v-for="date in dates" v-bind:class="{ enabled: enabled(date, time) }">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: { week: 0, dates: [], 
+              DOW: ["일", "월", "화", "수", "목", "금", "토"],
+              times: [ "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30",
+                       "1:00", "1:30", "2:00", "2:30", "3:00", "3:30", "4:00", "4:30", "5:00", "5:30" ],
+      methods: {
+        calcDates: function() {
+          while (true) {
+            let date = moment();
+            date.day("sunday");
+            date.add(this.week * 7, "days");
+            
+            if (date.isAfter("2019-12-16")) {
+              this.week--;
+              continue;
+            }
+            this.dates = [];
+            for (let i = 0; i < 5; ++i) { // 월 ~ 금
+              date.add(1, "days");
+              this.dates.push(date.clone());
+            }
+            break;
+          }
+        }, // end of calcDates()
+        enabled: function(date, time) {
+          
+        } // end of enabled()
+        
+      }, // end of methods
+      
+      mounted () {
+        this.calcDates();
+      }
+      
+    })    
+   </script>
+</body>    
+</html>
